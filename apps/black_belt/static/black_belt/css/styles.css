@@ -1,0 +1,71 @@
+#wrapper{
+    width: 1100px;
+    height: auto;
+    padding: 20px;
+    align: center;
+}
+#register{
+    width: 400px;
+    display: inline-block;
+}
+#login{
+    width: 400px;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 50px;
+}
+.floatRight{
+    float: right;
+}
+#favQuotes{
+    float: right;
+    width: 400px;
+    height: 350px;
+    border: 2px solid black;
+    padding: 10px;
+    overflow: auto;
+    vertical-align: top;
+}
+ #addQuote{
+    height: auto;
+    float: right;
+    width: 400px;
+    margin-top: 20px;
+}
+#quoteby{
+  color: red;
+  font-weight: bold;
+}
+.marginLeft{
+    margin-left: 45px;
+}
+#quotes{
+    width: 400px;
+    padding: 20px;
+    height: 800px;
+    overflow: auto;
+}
+#left{
+    width: 500px;
+    height: 850px;
+    display: inline-block;
+    vertical-align: top;
+}
+#right{
+    width: 500px;
+    height: 850px;
+    display: inline-block;
+    vertical-align: top;
+}
+#viewQuotes{
+    width: 700px;
+    padding: 20px;
+}
+#favorites{
+    margin-left: 100px;
+}
+#user{
+  padding-top:20px;
+  margin-left:50px;
+  padding-right:50px;
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'black_belt/css/styles.css'%}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <title>User Page</title>
+    </head>
+    <body>
+      <div id="user">
+        <h3><a class="floatRight btn btn-primary" href="/">Logout</a></h3>
+        <h3><a class="floatRight btn btn-primary" href="/quotes">Dashboard</a></h3>
+
+        <h2>All Post(s) by: <span class="label label-info">{{user.name}}</span></h2>
+        <h4>Total Post(s): {{user.count}}</h4>
+        {% for quote in quotes %}
+            <div id="viewQuotes">
+                <h3><span class="label label-default">{{quote.quoted_by}}:</span> {{quote.content}}</h3>
+            </div>
+        {% endfor %}
+      </div>
+    </body>
+</html>

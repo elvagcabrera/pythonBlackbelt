@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'black_belt/css/styles.css'%}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <title>Quotes</title>
+    </head>
+    <body>
+        <div id="wrapper">
+          {% for message in messages %}
+          <div class="alert alert-danger">
+              <p>{{message}}<p>
+         </div>
+          {% endfor %}
+            <div id="left">
+                <h1>Welcome, {{user.alias}}</h1>
+                <h2>Quotable Quotes</h2>
+                <div id="quotes">
+                {% for quote in quotes %}
+                    <h3><span class="label label-default">{{quote.quoted_by}}:</span></h3>
+                    <h4>{{quote.content}}</h4>
+                    <h4><span class="label label-info">Posted by:</span> <a href="/viewUser/{{quote.user.id}}">{{quote.user.name}}</a></h4>
+                    <form action="/favorite" method="post" id="favoriteForm">
+                        {% csrf_token %}
+                        <input type="hidden" name="quoteObj" value="{{quote.id}}">
+                        <input type="hidden" name="userObj" value="{{quote.user.id}}">
+                        <input type="submit" value="Add to my favorite list">
+                    </form>
+                {% endfor %}
+                </div>
+            </div>
+            <div id="right">
+                <a class="floatRight btn btn-primary" href="/">Logout</a><br>
+                <h2 id="favorites">Your Favorites</h2>
+                <div id="favQuotes">
+                    {% for favorite in favorites %}
+                        <p><span class="label label-default">{{favorite.quote.quoted_by}}:</span> {{favorite.quote.content}}</p>
+                        <p><span class="label label-info">Posted by:</span> <a href="/viewUser/{{favorite.quote.user.id}}">{{favorite.quote.user.name}}</a></p></a>
+                        <form action="/removeFavorite" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="quote" value="{{favorite.id}}">
+                            <input type="submit" value="Remove From Favorites List">
+                        </form>
+                        <br>
+                    {% endfor %}
+                </div>
+                <div id="addQuote">
+                    <form action="/process" method="post" class="form">
+                        {% csrf_token %}
+                        <h3>Contribute a Quote:</h3>
+                        Quoted By:<input class="form-control" type="text" name="quotedBy"><br>
+                        Message: <textarea class="form-control" name="content" rows="5" cols="20"></textarea><br>
+                        <input class="btn btn-primary" type="submit" value="Submit Review">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
